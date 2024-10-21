@@ -32,3 +32,32 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 		link.href = details.favicon;
 	}, [details]);
 # ===========================================================================================================
+
+# tailwind css setup
+
+# terminal
+npm i -D tailwindcss
+npx tailwindcss init
+
+# tailwind.config.js
+content: ["./src/**/*.{js,jsx,ts,tsx}",]
+
+# index.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+# ===========================================================================================================
+
+# [eslint] Delete `CR` [prettier/prettier]
+# upon this error add the rules
+
+.eslintrc.js
+
+module.exports = {
+  root: true,
+  extends: '@react-native-community',
+  rules: {'prettier/prettier': ['error', {endOfLine: 'auto'}]},
+}
+
+# ===========================================================================================================
