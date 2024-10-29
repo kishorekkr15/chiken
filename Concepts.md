@@ -37,10 +37,20 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 # terminal
 npm i -D tailwindcss
+
+# Tailwind CSS is used for development (to build the final CSS for production), it's generally best to install it as a development dependency using -D to avoid unnecessary packages in production.
+
+# npm install --save-dev (or -D),
+________________________________________________________
 npx tailwindcss init
 
+# This initializes a new Tailwind CSS configuration file (tailwind.config.js) in your project root. This file allows you to customize your Tailwind setup, such as adding custom colors, spacing, etc
+________________________________________________________
 # tailwind.config.js
 content: ["./src/**/*.{js,jsx,ts,tsx}",]
+
+# Without the content option, Tailwind won't know which files to scan for used classes, leading to either an empty or bloated CSS file.
+________________________________________________________
 
 # index.css
 @tailwind base;
@@ -59,5 +69,18 @@ module.exports = {
   extends: '@react-native-community',
   rules: {'prettier/prettier': ['error', {endOfLine: 'auto'}]},
 }
+
+# ===========================================================================================================
+
+# to pass data via link
+
+<Link 
+	to = "specificpage"
+	state = {data}
+/>
+
+# in  specific page
+const location = useLocation()
+const data = location.state
 
 # ===========================================================================================================
