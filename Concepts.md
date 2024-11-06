@@ -84,3 +84,14 @@ const location = useLocation()
 const data = location.state
 
 # ===========================================================================================================
+
+# convert text input into time input onfocus
+
+ <input
+     className="expires_time"
+     type="text"
+     placeholder="valid to"
+     onChange={(e) => handleChange(e.target.value, "start_time")}
+     value={createTip?.start_time}
+     onFocus={(e) => e.target.type = 'time'}
+ />
