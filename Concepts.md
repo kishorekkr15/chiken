@@ -36,7 +36,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 # tailwind css setup
 
 # terminal
-npm i -D tailwindcss
+npm install -D tailwindcss postcss autoprefixer
 
 # Tailwind CSS is used for development (to build the final CSS for production), it's generally best to install it as a development dependency using -D to avoid unnecessary packages in production.
 
@@ -45,6 +45,15 @@ ________________________________________________________
 npx tailwindcss init
 
 # This initializes a new Tailwind CSS configuration file (tailwind.config.js) in your project root. This file allows you to customize your Tailwind setup, such as adding custom colors, spacing, etc
+________________________________________________________
+# postcss.config.js
+  module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  }
+}
+
 ________________________________________________________
 # tailwind.config.js
 content: ["./src/**/*.{js,jsx,ts,tsx}",]
@@ -57,6 +66,12 @@ ________________________________________________________
 @tailwind components;
 @tailwind utilities;
 
+________________________________________________________
+# restart again
+npm start
+
+# ===========================================================================================================
+# ===========================================================================================================
 # ===========================================================================================================
 
 # [eslint] Delete `CR` [prettier/prettier]
@@ -87,11 +102,54 @@ const data = location.state
 
 # convert text input into time input onfocus
 
- <input
-     className="expires_time"
-     type="text"
-     placeholder="valid to"
-     onChange={(e) => handleChange(e.target.value, "start_time")}
-     value={createTip?.start_time}
-     onFocus={(e) => e.target.type = 'time'}
- />
+					<input
+                        className="expires_time"
+                        type="text"
+                        onChange={(e) => handleChange(e.target.value, "end_time")}
+                        value={createTip?.end_time}
+                        placeholder="- end time -"
+                        onFocus={(e) => e.target.type = 'time'}
+                        onBlur={(e) => {
+                          e.target.type = 'text'
+                          handleChange(hour12Format(e.target.value), "end_time")
+                        }}
+                      />
+
+# ===========================================================================================================
+# change specific row color change in muidatatable
+  const options = {
+    filterType: "checkbox",
+    selectableRows: "none",
+    viewColumns: false,
+    setRowProps: (row, dataIndex, rowIndex) => {
+      console.log(row, "nitttrror")
+      if ((active === 4) && (row[9] === true)) {
+        return {
+          style: { backgroundColor: "#ffffff" }
+        };
+      }
+      return {};
+    }
+  };
+
+# ===========================================================================================================
+# issue faced for font awesome render issue- font family need applied to only for body instead of all element
+  *{
+    font-family:"sans seriff"
+  }
+
+* universal selector - applies to all element
+
+ body{
+    font-family:"sans seriff"
+  }
+
+  body - applies to body tags element
+
+
+# ===========================================================================================================
+# line break \n 
+
+message.replace(/\\n/g, '\n')
+
+That \n line feed appears literally means that it was escaped at some point, it is \\n in fact
