@@ -153,3 +153,9 @@ const data = location.state
 message.replace(/\\n/g, '\n')
 
 That \n line feed appears literally means that it was escaped at some point, it is \\n in fact
+
+# ===========================================================================================================
+
+react-native-image-crop-picker [error: user did not grant library permission.] site:stackoverflow.com
+
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" tools:replace="android:maxSdkVersion" android:requestLegacyExternalStorage="true"/>
