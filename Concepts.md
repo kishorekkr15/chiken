@@ -1,5 +1,9 @@
 # chiken means knowledge
 # ===========================================================================================================
+New project setup react
+npm i react-router-dom
+
+# ===========================================================================================================
 
 # to use the slice outside the component like interceptors
 # need to import store and logout slice. "dispatch" can be used directly
