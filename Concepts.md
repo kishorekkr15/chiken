@@ -163,3 +163,87 @@ That \n line feed appears literally means that it was escaped at some point, it 
 react-native-image-crop-picker [error: user did not grant library permission.] site:stackoverflow.com
 
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" tools:replace="android:maxSdkVersion" android:requestLegacyExternalStorage="true"/>
+
+# ===========================================================================================================
+
+reddis setup in windows
+
+wsl --install
+________________________________________________________
+Enable Required Features
+
+Open Control Panel > Programs > Turn Windows features on or off.
+Ensure the following features are enabled:
+Windows Subsystem for Linux
+Virtual Machine Platform
+Click OK and restart your system if prompted.
+________________________________________________________
+# open ubuntu
+
+curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+
+sudo apt-get update
+sudo apt-get install redis
+sudo service redis-server start
+
+# to check
+redis-cli
+127.0.0.1:6379> ping
+PONG
+
+# ===========================================================================================================
+# joi-objectid
+
+const joiObjectId = require("joi-objectid")(Joi);
+
+tenant_id: joiObjectId().required(),
+
+# ===========================================================================================================
+# findOne vs find aggregation
+$findone - returns only one data that matches first
+$find - returns find all documents that matches 
+
+# ===========================================================================================================
+# filter in aggregation
+# remove unwanted data like empty objects
+[
+  my_arr:[
+    {
+      id: ObjectId('618f7ef057c2923be10d1111')
+      //other stuff
+    },
+    {},
+    {},
+  ]
+]
+
+
+
+
+{
+  "$project": {
+    "my_arr": {
+      "$filter": {
+        "input": "$my_arr",
+        "as": "a",
+        "cond": {
+          "$ne": [
+            "$$a",
+            {}
+          ]
+        }
+      }
+    }
+  }
+}
+
+# ===========================================================================================================
+# dangerouslyinnerhtml overflow issue fixed
+  <!-- 
+  <div className="content_div_parent"
+      dangerouslySetInnerHTML={{ __html: data }}
+      style={{ color: "white !important", whiteSpace: "normal", wordWrap: 'break-word' }}
+  > 
+  -->
