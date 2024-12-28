@@ -1,4 +1,9 @@
 # frontend
+icon generator
+
+https://romannurik.github.io/AndroidAssetStudio/icons-launcher.html
+
+_________________________________________________________________________
 
 # install required packages
 npm i 

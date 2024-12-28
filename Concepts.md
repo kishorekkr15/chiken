@@ -193,6 +193,13 @@ redis-cli
 127.0.0.1:6379> ping
 PONG
 
+________________________________________________________
+
+Redis, short for Remote Dictionary Server
+________________________________________________________
+# setting expiry time in set method
+
+await redisclient.set(email_id, OTP, { EX: 10 });
 # ===========================================================================================================
 # joi-objectid
 
@@ -241,9 +248,69 @@ $find - returns find all documents that matches
 
 # ===========================================================================================================
 # dangerouslyinnerhtml overflow issue fixed
+
+wordwrap break-word
   <!-- 
   <div className="content_div_parent"
       dangerouslySetInnerHTML={{ __html: data }}
       style={{ color: "white !important", whiteSpace: "normal", wordWrap: 'break-word' }}
   > 
   -->
+# ===========================================================================================================
+
+tags is arrayOfObjects in mongoCollection  - jsondata is array of strings
+
+        let match_obj={}
+      match_obj.forum_type="question"
+      match_obj.status="active"
+      if (jsonData.tags) {
+          match_obj["tags.tag_name"] = { $in: jsonData.tags };
+      }
+
+# ===========================================================================================================
+# remove data from one array with reference to another array
+let a = ['a', 'b', 'c'];
+let b = ['a', 'c'];
+
+a = a.filter(item => !b.includes(item));
+
+console.log(a); // Output: ['b']
+
+
+# ===========================================================================================================
+forgot password
+
+1. email check -> generate otp -> encrypt and store
+2. otp verification
+3. change password
+# ===========================================================================================================
+# Generating random password
+
+export const generate_random_password = () => {
+    let a = 'abcdefghijklmnopqrstuvwxyz'
+    let b = '1234567890'
+    let c = '@#$%&*+?!'
+    let f = (x, y, t) => {
+        let h = ''
+        for (let i = 0; i < x; i++) h += t.charAt(Math.floor(Math.random() * y))
+        return h
+    }
+    return f(3, 25, a) + f(1, 8, c) + f(3, 9, b) + f(3, 25, a)
+}
+
+# ===========================================================================================================
+git user find and change
+
+git config --list
+git config --global user.name "kishorekumar"
+git config --global user.email "kishorekumar.s@quantzi.in"
+
+# ===========================================================================================================
+# app.use
+
+1. For example: app.use('/apple', ...) will match “/apple”, “/apple/images”, “/apple/images/news”, and so on.
+2. path defaults to “/”, middleware mounted without a path will be executed for every request to the app.
+3. Error-handling middleware always takes four arguments.
+   You must provide four arguments to identify it as an error-handling middleware function.
+   Even if you don’t need to use the next object, you must specify it to maintain the signature. 
+   Otherwise, the next object will be interpreted as regular middleware and will fail to handle errors.   
