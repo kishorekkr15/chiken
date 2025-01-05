@@ -314,3 +314,12 @@ git config --global user.email "kishorekumar.s@quantzi.in"
    You must provide four arguments to identify it as an error-handling middleware function.
    Even if you don’t need to use the next object, you must specify it to maintain the signature. 
    Otherwise, the next object will be interpreted as regular middleware and will fail to handle errors.   
+
+
+# ===========================================================================================================
+# unique file name
+
+      const file_extension = req.file.originalname.split('.').pop()
+      const file_name = req.file.originalname.split('.').slice(0, -1).join('.')
+      const dateTime = moment(new Date()).format("DD-MM-yyyy-hh-mm-ss")
+      const unique_file_name = file_name + dateTime + "." + file_extension
