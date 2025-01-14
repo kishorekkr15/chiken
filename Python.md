@@ -88,8 +88,13 @@ Check if "free" is present in the following text:
 
 txt = "The best things in life are free!"
 print("free" in txt)
-
 # true
+
+
+thislist = ["apple", "banana", "cherry"]
+if "apple" in thislist:
+  print("Yes, 'apple' is in the fruits list")
+
 
 # ===========================================================================================================
 Print only if "free" is present:
@@ -113,34 +118,49 @@ if "expensive" not in txt:
 
 # ===========================================================================================================
 Get the characters from position 2 to position 5 (not included):
-
+it is called range
 b = "Hello, World!"
 print(b[2:5])
-
 # llo
+
+thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+print(thislist[2:5])
+# ['cherry', 'orange', 'kiwi']
+
 # ===========================================================================================================
 Get the characters from the start to position 5 (not included):
 
 b = "Hello, World!"
 print(b[:5])
-
 # Hello
+
+
+thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+print(thislist[:4])
+# ['apple', 'banana', 'cherry', 'orange']
 # ===========================================================================================================
 
 Get the characters from position 2, and all the way to the end:
 
 b = "Hello, World!"
 print(b[2:])
-
 # llo, World!
+
+thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+print(thislist[2:])
+# ['cherry', 'orange', 'kiwi', 'melon', 'mango']
 # ===========================================================================================================
 
 To, but not included: "d" in "World!" (position -2):
 
 b = "Hello, World!"
 print(b[-5:-2])
-
 # orl
+
+
+thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+print(thislist[-4:-1])
+# ['orange', 'kiwi', 'melon']
 # ===========================================================================================================
 uppercase
 
@@ -532,8 +552,7 @@ Thus, the result of the shift is 40.
 
 Let's walk through the example with the walrus operator:
 
-python
-Copy code
+
 while (user_input := input("Enter something: ")) != "exit":
     print(f"You entered: {user_input}")
 Explanation:
@@ -602,4 +621,195 @@ Enter something: exit
 Key Point:
 The walrus operator := allows the assignment of the input to user_input while checking the condition in the while loop at the same time. It avoids writing user_input = input() on a separate line and lets us both assign and check the value in a single expression.
 
-# ===========================================================================================================
+# =========================================================================================================== 
+and --->	Returns True if both statements are true	                x < 5 and  x < 10	
+or	---> Returns True if one of the statements is true	            x < 5 or x < 4	
+not	---> Reverse the result, returns False if the result is true	  not(x < 5 and x < 10)
+
+# =========================================================================================================== 
+
+x = ["apple", "banana"]
+y = ["apple", "banana"]
+z = x
+
+print(x is z) TRUE
+
+# returns True because z is the same object as x
+
+print(x is y) FALSE
+
+# returns False because x is not the same object as y, even if they have the same content
+
+print(x == y) true
+
+# to demonstrate the difference betweeen "is" and "==": this comparison returns True because x is equal to y
+
+# =========================================================================================================== 
+Python Variable Reference and is Operator
+is Operator:
+
+Checks if two variables point to the same object in memory.
+Example:
+
+a = 10
+b = 10
+print(a is b)  # True, both point to the same object
+Immutable Data Types:
+
+Data types like integers, strings, and tuples are immutable.
+If you change the value of a variable, a new object is created.
+Example:
+
+a = 10
+b = 10
+a = 20  # 'a' now points to a new object
+print(b)  # 10, remains unchanged
+Rebinding Variables:
+
+Reassigning a variable does not affect other variables, even if they initially pointed to the same object.
+Mutable Data Types (e.g., lists):
+
+For mutable objects, changes made to one variable will reflect in the other if they point to the same object.
+Example:
+
+x = [1, 2, 3]
+y = x
+x.append(4)
+print(y)  # [1, 2, 3, 4], because 'x' and 'y' point to the same object
+Key Takeaway:
+
+Use is to check object identity.
+Use == to check value equality.
+
+# =========================================================================================================== 
+
+# AND
+The & operator compares each bit and set it to 1 if both are 1, otherwise it is set to 0:
+# OR
+The | operator compares each bit and set it to 1 if one or both is 1, otherwise it is set to 0:
+
+# XOR
+print(6 ^ 3)
+The ^ operator compares each bit and set it to 1 if only one is 1, otherwise (if both are 1 or both are 0) it is set to 0:
+
+6 = 0000000000000110
+3 = 0000000000000011
+--------------------
+5 = 0000000000000101
+====================
+
+# NOT
+The ~ operator inverts each bit (0 becomes 1 and 1 becomes 0).
+print(~3)
+Inverted 3 becomes -4:
+ 3 = 0000000000000011
+-4 = 1111111111111100
+
+# Zero fill left shift
+
+The << operator inserts the specified number of 0's (in this case 2) from the right and let the same amount of leftmost bits fall off:
+
+If you push 00 in from the left:
+ 3 = 0000000000000011
+becomes
+12 = 0000000000001100
+
+
+# Signed right shift
+The >> operator moves each bit the specified number of times to the right. Empty holes at the left are filled with 0's.
+
+If you move each bit 2 times to the right, 8 becomes 2:
+ 8 = 0000000000001000
+becomes
+ 2 = 0000000000000010
+
+# =========================================================================================================== 
+# python list
+
+A list with strings, integers and boolean values:
+list1 = ["abc", 34, True, 40, "male"]
+
+
+Using the list() constructor to make a List:
+thislist = list(("apple", "banana", "cherry"))
+print(thislist)
+['apple', 'banana', 'cherry']
+
+
+egative indexing means start from the end
+-1 refers to the last item, -2 refers to the second last item etc.
+Example
+Print the last item of the list:
+thislist = ["apple", "banana", "cherry"]
+print(thislist[-1])
+"cherry"
+# =========================================================================================================== 
+# Change a Range of Item Values for lists
+
+thislist = ["apple", "banana", "cherry", "orange", "kiwi", "mango"]
+thislist[1:3] = ["blackcurrant", "watermelon"]
+print(thislist)
+['apple', 'blackcurrant', 'watermelon', 'orange', 'kiwi', 'mango']
+
+
+
+thislist = ["apple", "banana", "cherry"]
+thislist[1:2] = ["blackcurrant", "watermelon"]
+print(thislist)
+['apple', 'blackcurrant', 'watermelon', 'cherry']
+
+
+thislist = ["apple", "banana", "cherry"]
+thislist[1:3] = ["watermelon"]
+print(thislist)
+['apple', 'watermelon']
+
+
+thislist = ["apple", "banana", "cherry"]
+thislist.insert(2, "watermelon")
+print(thislist)
+['apple', 'banana', 'watermelon', 'cherry']
+
+
+
+# =========================================================================================================== 
+# python imports
+
+1. Full Module Import
+import math  # Access everything in the module with a prefix.
+print(math.sqrt(16))  # Output: 4.0
+
+
+2. Specific Imports
+from math import sqrt, pi  # Import specific items directly.
+print(sqrt(16), pi)  # Output: 4.0 3.141592653589793
+
+
+3. Import All (*)
+from math import *  # Import all public objects (not recommended).
+print(sqrt(16), pi)  # Output: 4.0 3.141592653589793
+
+
+4. Aliased Import
+import numpy as np  # Alias for convenience.
+print(np.array([1, 2, 3]))  # Output: [1 2 3]
+
+
+5. Import from Custom Modules
+from utils import greet  # Import a function from another file.
+print(greet("Alice"))  # Output: Hello, Alice!
+
+
+6. Controlling Exports with __all__
+# In utils.py
+__all__ = ['greet']  # Restrict exports.
+def greet(name): return f"Hello, {name}!"
+from utils import *  # Only items in __all__ are imported.
+print(greet("Alice"))  # Output: Hello, Alice!
+
+
+  7. Combining Different Import Styles
+# basically no need
+  import math  # Full module import.
+  from math import pi  # Specific item import.
+  print(math.sqrt(16), pi)  # Output: 4.0 3.141592653589793
