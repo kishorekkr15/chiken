@@ -1,8 +1,7 @@
-# chiken means knowledge
+# chiken means knowledge in japanese
 # ===========================================================================================================
 New project setup react
 npm i react-router-dom
-
 # ===========================================================================================================
 
 # to use the slice outside the component like interceptors
@@ -164,9 +163,13 @@ react-native-image-crop-picker [error: user did not grant library permission.] s
 
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" tools:replace="android:maxSdkVersion" android:requestLegacyExternalStorage="true"/>
 
+RNFS Download issue in older mobiles
+<application android:requestLegacyExternalStorage="true">
+
+
 # ===========================================================================================================
 
-reddis setup in windows
+# redis setup in windows
 
 wsl --install
 ________________________________________________________
@@ -323,3 +326,29 @@ git config --global user.email "kishorekumar.s@quantzi.in"
       const file_name = req.file.originalname.split('.').slice(0, -1).join('.')
       const dateTime = moment(new Date()).format("DD-MM-yyyy-hh-mm-ss")
       const unique_file_name = file_name + dateTime + "." + file_extension
+# ===========================================================================================================
+# redirecting to secret url
+
+document.addEventListener('keydown', (event) => {
+    if (event.ctrlKey && event.key === '/') {
+      event.preventDefault();
+      const baseDomain = window.location.origin;
+      const newUrl = `${baseDomain}/test`;
+      window.location.href = newUrl;
+    }
+  })
+
+# ===========================================================================================================
+# sending object in query in postman
+https://medium.com/raml-api/objects-in-query-params-173d2712ce5b
+
+filter_by={
+  task_title:"create test_update_many"
+}
+
+{{q_admin_url}}/common/fields?module_code=project_tasks&filter_by[task_title]=create test_update_many
+
+# ===========================================================================================================
+# passing props from parent to child
+<component {...data}/>          //directly accessing
+<component data={data}/>        //assign to another variable
