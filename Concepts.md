@@ -352,3 +352,9 @@ filter_by={
 # passing props from parent to child
 <component {...data}/>          //directly accessing
 <component data={data}/>        //assign to another variable
+
+# ===========================================================================================================
+# axios error
+1. cors test in browser
+2. check with other browsers
+3. check the port - must not be 6000
