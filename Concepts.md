@@ -358,3 +358,11 @@ filter_by={
 1. cors test in browser
 2. check with other browsers
 3. check the port - must not be 6000
+# ===========================================================================================================
+# change select color in chrome backgroundColor and color
+::selection{
+  backgroundColor:"red",
+  color:"#fff"
+}
+
+# ===========================================================================================================
