@@ -20,3 +20,7 @@ const ZoomModal = ({ images }) => {
 }
 
 export default ZoomModal
+
+# ===========================================================================================================
+# set up a project in windows
+1.npx @react-native-community/cli@latest init test_mobile_app

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Fade & Scale Effect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .list-container {
+            width: 300px;
+            height: 300px;
+            overflow-y: scroll;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+        }
+
+        .list-item {
+            padding: 15px;
+            font-size: 18px;
+            background: #3498db;
+            color: white;
+            margin: 5px 0;
+            border-radius: 5px;
+            text-align: center;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="list-container">
+        <div class="list-item">Item 1</div>
+        <div class="list-item">Item 2</div>
+        <div class="list-item">Item 3</div>
+        <div class="list-item">Item 4</div>
+        <div class="list-item">Item 5</div>
+        <div class="list-item">Item 6</div>
+        <div class="list-item">Item 7</div>
+        <div class="list-item">Item 8</div>
+        <div class="list-item">Item 9</div>
+        <div class="list-item">Item 10</div>
+        <div class="list-item">Item 11</div>
+        <div class="list-item">Item 12</div>
+        <div class="list-item">Item 13</div>
+        <div class="list-item">Item 14</div>
+        <div class="list-item">Item 15</div>
+    </div>
+
+    <script>
+        const listContainer = document.querySelector(".list-container");
+        const listItems = document.querySelectorAll(".list-item");
+
+        function updateEffects() {
+            const containerRect = listContainer.getBoundingClientRect();
+            const isAtBottom = listContainer.scrollHeight - listContainer.scrollTop <= listContainer.clientHeight + 1;
+
+            if (isAtBottom) {
+                // Reset all items when scroll reaches bottom
+                listItems.forEach((item) => {
+                    item.style.opacity = 1;
+                    item.style.transform = "scale(1)";
+                });
+                return;
+            }
+
+            listItems.forEach((item) => {
+                const itemRect = item.getBoundingClientRect();
+                const distanceFromBottom = containerRect.bottom - itemRect.bottom;
+
+                if (distanceFromBottom < 100) { // Adjust threshold as needed
+                    let fadeFactor = Math.max(distanceFromBottom / 100, 0); // Normalize value between 0 and 1
+                    item.style.opacity = fadeFactor;
+                    item.style.transform = `scale(${0.8 + fadeFactor * 0.2})`; // Scale between 0.8 and 1
+                } else {
+                    item.style.opacity = 1;
+                    item.style.transform = "scale(1)";
+                }
+            });
+
+            requestAnimationFrame(updateEffects);
+        }
+
+        listContainer.addEventListener("scroll", () => requestAnimationFrame(updateEffects));
+    </script>
+
+</body>
+</html>
