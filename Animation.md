@@ -46,3 +46,43 @@ The stroke-dashoffset property in CSS defines the location along an SVG path whe
   }
 }
 # ===========================================================================================================
+# getBoundingClientRect
+
+x / left ====	195 === The X-coordinate of the left edge relative to the viewport
+y / top	=== 142.67 ==== The Y-coordinate of the top edge relative to the viewport
+width	=== 300 ===	The width of the .list-container
+height ===	300 ===	The height of the .list-container
+right ===	495 ===	The X-coordinate of the right edge (left + width)
+bottom ===	442.67 ===	The Y-coordinate of the bottom edge (top + height)
+
+
+
+scrollHeight = 860 → The total height of the scrollable content.
+clientHeight = 300 → The visible height of the container.
+scrollTop = 560 → The current scroll position (how much you have scrolled down).
+560 (scrollTop) + 300 (clientHeight) = 860 (scrollHeight) ✅
+
+
+
+# scroll geometry
+element width = 300   without scrollbar
+if scrollbar width is 20px then 280px
+
+
+✅ offsetParent: The nearest positioned ancestor (relative, absolute, fixed).
+✅ offsetLeft: Distance from the left of offsetParent.
+✅ offsetTop: Distance from the top of offsetParent.
+
+
+offsetWidth = width + left padding + right padding + left border + right border
+clientTop = border-top width
+clientLeft = border-left width
+
+(exlcude scrollbar)
+clientWidth = content width + left padding + right padding
+clientHeight = content height + top padding + bottom padding
+
+scrollWidth = content width + horizontal overflow
+scrollHeight = content height + vertical overflow
+
+scrollTop is “how much is scrolled up”.

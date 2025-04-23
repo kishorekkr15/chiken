@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,10 +38,11 @@
             margin: 5px 0;
             border-radius: 5px;
             text-align: center;
-            transition: opacity 0.2s ease, transform 0.2s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
     </style>
 </head>
+
 <body>
 
     <div class="list-container">
@@ -67,10 +69,13 @@
 
         function updateEffects() {
             const containerRect = listContainer.getBoundingClientRect();
+            console.log("containerRect", containerRect)
+            console.log("scrollHeight", listContainer.scrollHeight)
+            console.log("scrollTop", listContainer.scrollTop)
+            console.log("clientHeight", listContainer.clientHeight)
             const isAtBottom = listContainer.scrollHeight - listContainer.scrollTop <= listContainer.clientHeight + 1;
 
             if (isAtBottom) {
-                // Reset all items when scroll reaches bottom
                 listItems.forEach((item) => {
                     item.style.opacity = 1;
                     item.style.transform = "scale(1)";
@@ -92,11 +97,21 @@
                 }
             });
 
-            requestAnimationFrame(updateEffects);
+            // listContainer.addEventListener("scroll",
+            //     () => { console.log("callinf"); requestAnimationFrame(updateEffects) }
+            // );
         }
 
-        listContainer.addEventListener("scroll", () => requestAnimationFrame(updateEffects));
+        // Run the effect on page load if scrolling is enabled
+        window.addEventListener("load", () => {
+            updateEffects();
+        });
+
+        listContainer.addEventListener("scroll",
+            () => { console.log("callinf"); requestAnimationFrame(updateEffects) }
+        );
     </script>
 
 </body>
+
 </html>

@@ -366,3 +366,11 @@ filter_by={
 }
 
 # ===========================================================================================================
+
+rerender
+
+Re-renders only affect the component that owns the state + its descendants (if any). 
+React's “main job” is to keep the application UI in sync with the React state. The point of a re-render is to figure out what needs to change.
+Each render is a snapshot, like a photo taken by a camera, that shows what the UI should look like, based on the current application state.
+
+In an ideal world, React components would always be “pure”. A pure component is one that always produces the same UI when given the same props.
