@@ -86,3 +86,56 @@ scrollWidth = content width + horizontal overflow
 scrollHeight = content height + vertical overflow
 
 scrollTop is “how much is scrolled up”.
+
+
+
+
+
+
+SMS ZOO ZOO Animation
+
+        dotRefs.current.forEach((ref, i) => {
+          if (!ref) return;
+          const base = initialStates[i];
+          const x1 = base.left
+          const y1 = base.top
+          const x2 = base.left - deltaX
+          const y2 = base.top + deltaY
+          console.log(`showdown${i}`, x1, y1, x2, y2)
+          const top = base.top + scrollY;
+          const t = (top - y1) / (y2 - y1)
+          const left = x1 + ((x2 - x1) * t) 
+          console.log(`log_t${i}`, top, t, left, scrollY)
+          // ref.style.top = `${top}px`;
+          // ref.style.left = `${left}px`;
+        });
+
+
+
+
+
+              // if (y > 110) {
+      //   const yellowPosition = document.querySelector(".yellow-dot_2");
+      //   const sectionRect = yellowPosition?.getBoundingClientRect();
+      //   console.log("getclinetrect", sectionRect)
+      //   const yellowDotPositionX = sectionRect.left;
+      //   const yellowDotPositionY = sectionRect.top + scrollY;
+      //   const deltaX = Math.abs(yellowDotPositionX - position_x_000);
+      //   const deltaY = Math.abs(yellowDotPositionY - position_y_000);
+      //   dotRefs.current.forEach((ref, i) => {
+      //     if (!ref) return;
+      //     const base = initialStates[i];
+      //     const x1 = base.left
+      //     const y1 = base.top
+      //     const x2 = base.left - deltaX
+      //     const y2 = base.top + deltaY
+      //     // console.log(`showdown${i}`, x1, y1, x2, y2)
+      //     const top = base.top + scrollY;
+      //     console.log("top_log", top)
+      //     // const t = (top - y1) / (y2 - y1)
+      //     // const left = x1 + ((x2 - x1) * t)
+      //     // console.log(`log_t${i}`, top, t, left, scrollY)
+      //     // ref.style.top = `${top}px`;
+      //     // ref.style.left = `${left}px`;
+      //   });
+      // }

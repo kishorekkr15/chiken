@@ -374,3 +374,20 @@ React's “main job” is to keep the application UI in sync with the React stat
 Each render is a snapshot, like a photo taken by a camera, that shows what the UI should look like, based on the current application state.
 
 In an ideal world, React components would always be “pure”. A pure component is one that always produces the same UI when given the same props.
+
+# ===========================================================================================================
+# Multi Domain Setup In local
+
+Navigate to the Hosts File: Type the path C:\Windows\System32\Drivers\etc\hosts in the "File name" field. 
+Add or Modify the Entry: Under the existing entries, add a line with the format: IP_ADDRESS domain_name. For example, 127.0.0.1 example.local. 
+Save the Changes: Go to "File" > "Save". 
+
+
+for example
+
+127.0.0.1   www.tenantone.local
+127.0.0.1   www.tenanttwo.local
+
+we can access the website in http://www.tenantone.local:3001/
+
+# ===========================================================================================================
